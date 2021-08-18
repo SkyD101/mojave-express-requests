@@ -1,5 +1,21 @@
-import json, requests 
+function postMessageToDiscord(message) {
 
-def PagingDiscordServer(webhook_url, text_message): return requests.post(webhook_url, data=json.dumps({ "content": text_message }), headers={ 'Content-Type': 'application/json',}) 
+  message = message || "Hello World!";
 
-PagingDiscordServer('https://discord.com/api/webhooks/877666866162720788/2l3gkNVCem7t7EKQSUlDH1KgRcx1mYNMloeWqKWTL7rpvMbGgPt-WXlwpY4MyZSP1Jza', 'Hello from ViralML.com!!') 
+  var discordUrl = 'https://discord.com/api/webhooks/877666866162720788/2l3gkNVCem7t7EKQSUlDH1KgRcx1mYNMloeWqKWTL7rpvMbGgPt-WXlwpY4MyZSP1Jza';
+  var payload = JSON.stringify({content: message});
+
+  var params = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    method: "POST",
+    payload: payload,
+    muteHttpExceptions: true
+  };
+
+  var response = UrlFetchApp.fetch(discordUrl, params);
+
+  Logger.log(response.getContentText());
+
+}
