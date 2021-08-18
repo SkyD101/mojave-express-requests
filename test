@@ -1,0 +1,5 @@
+import json, requests 
+
+def PagingDiscordServer(webhook_url, text_message): return requests.post(webhook_url, data=json.dumps({ "content": text_message }), headers={ 'Content-Type': 'application/json',}) 
+
+PagingDiscordServer('https://discord.com/api/webhooks/877666866162720788/2l3gkNVCem7t7EKQSUlDH1KgRcx1mYNMloeWqKWTL7rpvMbGgPt-WXlwpY4MyZSP1Jza', 'Hello from ViralML.com!!') 
